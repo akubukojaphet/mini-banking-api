@@ -1,0 +1,9 @@
+package com.japhtech.mini_banking_api.repository;
+
+import com.japhtech.mini_banking_api.model.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    List<Transaction> findBySenderEmailOrReceiverEmail(String senderEmail, String receiverEmail);
+}
