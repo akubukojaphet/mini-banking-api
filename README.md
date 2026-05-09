@@ -416,24 +416,24 @@ http://3.81.116.79:9090/api
 ## 📸 Screenshots
 
 ### AWS EC2 Deployment
-![AWS EC2](<img width="1919" height="996" alt="Screenshot 2026-05-09 162148" src="https://github.com/user-attachments/assets/d2b2b45a-7d87-489b-9ff7-ec29454bcea6" />
-)
+<img width="1281" height="663" alt="image" src="https://github.com/user-attachments/assets/785e7688-8d7a-4854-9321-c2c811fc588d" />
+
 
 ### Docker Containers Running
-![Docker](<img width="1919" height="346" alt="Screenshot 2026-05-09 170057" src="https://github.com/user-attachments/assets/e0453929-379d-44f3-bbf6-a40e0e72b946" />
-)
+<img width="1417" height="615" alt="image" src="https://github.com/user-attachments/assets/ff01fb42-f8b9-4ce9-9f4f-9e6bfbf4fa85" />
+
 
 ### Postman — Register API
-![Register](<img width="1918" height="1130" alt="Screenshot 2026-05-09 175559" src="https://github.com/user-attachments/assets/763fdcad-c32a-4372-b08f-1c9572260968" />
-)
+<img width="1124" height="658" alt="image" src="https://github.com/user-attachments/assets/caefaeea-e357-4c8f-9d31-492a1478a886" />
+
 
 ### Postman — Login + JWT Token
-![JWT Token](<img width="1919" height="1127" alt="Screenshot 2026-05-09 183655" src="https://github.com/user-attachments/assets/2f7b74bf-a712-4737-bb25-5e7330337684" />
-)
+<img width="1124" height="660" alt="image" src="https://github.com/user-attachments/assets/9fd354fa-64a8-47b4-ac6e-29ff388776ee" />
+
 
 ### PostgreSQL Tables with Data
-![Database](<img width="1919" height="399" alt="Screenshot 2026-05-09 165305" src="https://github.com/user-attachments/assets/313ef235-4ae6-4417-bc02-7f56fabfa17d" />
-)
+<img width="1415" height="292" alt="image" src="https://github.com/user-attachments/assets/934cdb36-799c-4510-9632-18bf30dbf5bd" />
+
 
 ### GitHub Repository
 <img width="1919" height="1061" alt="image" src="https://github.com/user-attachments/assets/cc062b08-a8b1-438a-8f1d-117dc9308409" />
