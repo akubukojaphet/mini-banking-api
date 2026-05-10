@@ -8,7 +8,7 @@
 ## 🚀 Live Demo
 
 ```
-Base URL: http://3.81.116.79:9090/api
+Base URL: http://YOUR_EC2_PUBLIC_IP:9090/api
 ```
 
 ---
