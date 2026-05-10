@@ -132,7 +132,7 @@ sudo -u postgres psql
 
 ```sql
 CREATE DATABASE mini_bank;
-CREATE USER bank_user WITH PASSWORD 'BankPass123';
+CREATE USER bank_user WITH PASSWORD '${POSTGRES_PASSWORD}';
 GRANT ALL PRIVILEGES ON DATABASE mini_bank TO bank_user;
 \q
 ```
@@ -144,8 +144,8 @@ Open `src/main/resources/application.properties` and update:
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/mini_bank
 spring.datasource.username=bank_user
-spring.datasource.password=BankPass123
-jwt.secret=YOUR_SECRET_KEY
+spring.datasource.password=${DB_PASSWORD}
+jwt.secret=${JWT_SECRET}
 jwt.expiration=86400000
 server.port=8080
 ```
@@ -324,26 +324,50 @@ docker compose down
 version: '3.8'
 services:
   postgres:
-    image: postgres:15
+    image: postgres:16
+    container_name: mini-bank-postgres
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: mini_bank
-      POSTGRES_USER: bank_user
-      POSTGRES_PASSWORD: BankPass123
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - app-net
 
   app:
     build: .
+    container_name: mini-banking-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
     ports:
       - "9090:8080"
-    depends_on:
-      - postgres
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mini_bank
-      SPRING_DATASOURCE_USERNAME: bank_user
-      SPRING_DATASOURCE_PASSWORD: BankPass123
-```
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+    networks:
+      - app-net
 
+volumes:
+  postgres_data:
+
+networks:
+  app-net:
+```
+> Sensitive values are stored in a local `.env` file and are not committed to GitHub.
 ---
 
 ## ☁️ Deployment (AWS EC2)
@@ -352,8 +376,8 @@ services:
 
 | Property | Value |
 |----------|-------|
-| Public IP | 3.81.116.79 |
-| Private IP | 172.31.37.53 |
+| Public IP | YOUR_EC2_PUBLIC_IP |
+| Private IP | YOUR_PRIVATE_IP |
 | OS | Ubuntu 22.04 LTS |
 | Instance Type | t2.micro |
 | Port | 9090 |
@@ -362,7 +386,7 @@ services:
 
 ```bash
 # SSH into EC2
-ssh -i your-key.pem ubuntu@3.81.116.79
+ssh -i your-key.pem ubuntu@YOUR_EC2_PUBLIC_IP
 
 # Install Docker and Git
 sudo apt update
@@ -385,7 +409,7 @@ docker compose up --build -d
 
 Live API accessible at:
 ```
-http://3.81.116.79:9090/api
+http://YOUR_EC2_PUBLIC_IP:9090/api
 ```
 
 ---
