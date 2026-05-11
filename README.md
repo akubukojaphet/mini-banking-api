@@ -8,7 +8,7 @@
 ## 🚀 Live Demo
 
 ```
-Base URL: http://YOUR_EC2_PUBLIC_IP:9090/api
+Base URL: http://3.81.116.79:9090/api
 ```
 
 ---
@@ -376,8 +376,8 @@ networks:
 
 | Property | Value |
 |----------|-------|
-| Public IP | YOUR_EC2_PUBLIC_IP |
-| Private IP | YOUR_PRIVATE_IP |
+| Public IP | 3.81.116.79 |
+| Private IP | 172.31.37.53 |
 | OS | Ubuntu 22.04 LTS |
 | Instance Type | t2.micro |
 | Port | 9090 |
@@ -409,7 +409,7 @@ docker compose up --build -d
 
 Live API accessible at:
 ```
-http://YOUR_EC2_PUBLIC_IP:9090/api
+http://3.81.116.79:9090/api
 ```
 
 ---
@@ -471,7 +471,7 @@ http://YOUR_EC2_PUBLIC_IP:9090/api
 
 Cloud & DevOps Engineer | Backend Developer
 
-- 🐙 GitHub: [@akubukojaphet](https://github.com/akubukojaphet)
+- 🐙 Email: [@akubukojaphet](https://akubukojaphet@gmail.com)
 - 💼 LinkedIn: [akubuko-japhet](https://www.linkedin.com/in/akubuko-japhet)
 
 ---
